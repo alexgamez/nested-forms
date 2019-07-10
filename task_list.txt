@@ -1,0 +1,20 @@
+Task list
+
+install rspec
+
+
+generate country scaffold
+    columns: name:string
+
+generate state model
+    columns: name:string, country:reference
+
+edit models to apply associations
+    
+edit controller country to apply the association
+
+edit _form country to apply the association
+
+
+Rails version: 5.2.3
+Ruby version: 2.6.3 (x86_64-linux)
