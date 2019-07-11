@@ -24,6 +24,26 @@
           <% if !state.object.id.nil? %>
             <%= state.check_box :_destroy %> (check to delete)
           <% end %>
+
+          <ul>
+            <%= state.fields_for :cities do |city| %>
+              <li>
+                <%= city.text_field :name %>
+                <% if !city.object.id.nil? %>
+                  <%= city.check_box :_destroy %> (check to delete)
+                <% end %>
+              </li>
+            <% end %>
+
+            <% if !state.object.id.nil? %>
+              <%= state.fields_for :cities, City.new do |city| %>
+                <li>
+                  <%= city.text_field :name %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+
         </li>
     <% end %>
   </ul>
