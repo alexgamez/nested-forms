@@ -4,7 +4,6 @@ class State < ApplicationRecord
 
   # Column name is required
   validates :name, presence: true
-  validates :country_id, presence: true
 
   before_validation  :upercase_fields
 

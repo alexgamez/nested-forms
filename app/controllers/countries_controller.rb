@@ -15,10 +15,12 @@ class CountriesController < ApplicationController
   # GET /countries/new
   def new
     @country = Country.new
+    @country.states.build # Permit create States
   end
 
   # GET /countries/1/edit
   def edit
+    @country.states.build # Permit edit States
   end
 
   # POST /countries
@@ -69,6 +71,7 @@ class CountriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def country_params
-      params.require(:country).permit(:name)
+      # Permit parameters of state, and the action destroy
+      params.require(:country).permit(:name, states_attributes: [:id, :name, :_destroy])
     end
 end

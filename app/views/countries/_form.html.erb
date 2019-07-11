@@ -16,6 +16,18 @@
     <%= form.text_field :name %>
   </div>
 
+  <h2>States</h2>
+  <ul class="fields">
+    <%= form.fields_for :states do |state| %>
+        <li>
+          <%= state.text_field :name %>
+          <% if !state.object.id.nil? %>
+            <%= state.check_box :_destroy %> (check to delete)
+          <% end %>
+        </li>
+    <% end %>
+  </ul>
+
   <div class="actions">
     <%= form.submit %>
   </div>
