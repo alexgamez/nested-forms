@@ -1,12 +1,14 @@
 class Country < ApplicationRecord
 
-    # Column name is required 
-    validates :name, presence: true
+  has_many :states
 
-    # Name always in upper case
-    before_save :name_upcase    
+  # Column name is required
+  validates :name, presence: true
 
-    def name_upcase    
-        self.name = self.name.upcase
-    end
+  # Name always in upper case
+  before_save :name_upcase
+
+  def name_upcase
+    self.name.upcase!
+  end
 end
