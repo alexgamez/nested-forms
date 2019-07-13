@@ -1,26 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1>Countries</h1>
+  <h1>Countries</h1>
+    <ul class="list-group">
+      <% @countries.each do |country| %>
+        <li class="list-group-item">
+          <%= link_to country.name, edit_country_path(country) %>
+          <div class="d-flex justify-content-end">
+            <%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @countries.each do |country| %>
-      <tr>
-        <td><%= country.name %></td>
-        <td><%= link_to 'Show/Edit', edit_country_path(country) %></td>
-        <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Country', new_country_path %>
+        </li>
+      <% end %>
+    </ul>
+  <br>
+  <%= link_to 'New Country', new_country_path, class: 'btn btn-primary' %>
+</div>

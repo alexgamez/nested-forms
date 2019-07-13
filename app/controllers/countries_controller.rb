@@ -1,5 +1,6 @@
 class CountriesController < ApplicationController
   before_action :set_country, only: [:show, :edit, :update, :destroy]
+  before_action :set_build, only: [ :edit]
 
   # GET /countries
   # GET /countries.json
@@ -15,12 +16,11 @@ class CountriesController < ApplicationController
   # GET /countries/new
   def new
     @country = Country.new
-    @country.states.build.cities.build # Permit create States and Cities
+    set_build
   end
 
   # GET /countries/1/edit
   def edit
-    @country.states.build.cities.build # Permit edit States and Cities
   end
 
   # POST /countries
@@ -33,6 +33,7 @@ class CountriesController < ApplicationController
         format.html { redirect_to @country, notice: 'Country was successfully created.' }
         format.json { render :show, status: :created, location: @country }
       else
+        set_build
         format.html { render :new }
         format.json { render json: @country.errors, status: :unprocessable_entity }
       end
@@ -73,5 +74,9 @@ class CountriesController < ApplicationController
     def country_params
       # Permit parameters of state, and the action destroy
       params.require(:country).permit(:name, states_attributes: [:id, :name, :_destroy, cities_attributes: [:id, :name, :_destroy] ])
+    end
+
+    def set_build
+      @country.states.build.cities.build # Permit create States and Cities
     end
 end

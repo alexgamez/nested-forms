@@ -16,29 +16,29 @@
     <%= form.text_field :name %>
   </div>
 
-  <h2>States</h2>
-  <ul class="fields">
+  <h2 class="">States</h2><h4>and cities</h4>
+  <ul class="list-group">
     <%= form.fields_for :states do |state| %>
-        <li>
-          <%= state.text_field :name %>
+        <li class="list-group-item">
+          <%= state.text_field :name ,placeholder: 'state name'%>
           <% if !state.object.id.nil? %>
-            <%= state.check_box :_destroy %> (check to delete)
+            <%= state.check_box :_destroy %> <span class="font-size-smaller "> (check to delete) </span>
           <% end %>
 
-          <ul>
+          <ul class="list-group">
             <%= state.fields_for :cities do |city| %>
-              <li>
-                <%= city.text_field :name %>
+              <li class="list-group-item">
+                <%= city.text_field :name ,placeholder: 'city name'%>
                 <% if !city.object.id.nil? %>
-                  <%= city.check_box :_destroy %> (check to delete)
+                  <%= city.check_box :_destroy %> <span class="font-size-smaller "> (check to delete) </span>
                 <% end %>
               </li>
             <% end %>
 
             <% if !state.object.id.nil? %>
               <%= state.fields_for :cities, City.new do |city| %>
-                <li>
-                  <%= city.text_field :name %>
+                <li class="list-group-item">
+                  <%= city.text_field :name , placeholder: "city name"%>
                 </li>
               <% end %>
             <% end %>
@@ -47,8 +47,11 @@
         </li>
     <% end %>
   </ul>
-
-  <div class="actions">
-    <%= form.submit %>
+  <hr class="invisible">
+  <div class="row">
+    <div class="col col-xl-3 col-lg-3 col-md-6">
+      <%= form.submit 'Save', class: 'btn btn-success btn-block'%>
+    </div>
   </div>
+
 <% end %>
