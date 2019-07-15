@@ -1,24 +1,22 @@
-# README
+# Generate-Excel
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Proyecto para ejemplificar el funcionamiento de los formularios anidados con RoR
 
-Things you may want to cover:
+### Instalación 🔧
 
-* Ruby version
+Para ver el funcionamiento de la aplicación, utiliza estos comandos después de descargarlo
+```
+bundle install && bundle update 
+rake db:migrate
+rake db:seed
+```
+y accede a localhost:3000 desde tu navegador.
+Las opciones de Ingresar nuevo país y editar país, permiten asociarle estados y a estos asociarles ciudades
+todo desde el mismo formulario.
 
-* System dependencies
+### Pre-requisitos 📋
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+ruby 2.6.3
+rails 5.2.3
+```
