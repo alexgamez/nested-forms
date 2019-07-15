@@ -1,4 +1,4 @@
-# Generate-Excel
+# Nested-Forms
 
 Proyecto para ejemplificar el funcionamiento de los formularios anidados con RoR
 
